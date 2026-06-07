@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trending Scenes India - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary": "#003547",
+                "surface-dim": "#1a120b",
+                "inverse-primary": "#8f4e00",
+                "surface-container": "#271e17",
+                "on-error-container": "#ffdad6",
+                "on-tertiary-fixed": "#001f2a",
+                "on-secondary-container": "#e9ffdd",
+                "on-surface": "#f1dfd3",
+                "tertiary-container": "#00c0f7",
+                "error": "#ffb4ab",
+                "on-secondary-fixed-variant": "#035300",
+                "on-secondary-fixed": "#012200",
+                "outline": "#a38d7c",
+                "on-primary-fixed-variant": "#6d3a00",
+                "error-container": "#93000a",
+                "surface-tint": "#ffb77a",
+                "secondary-fixed-dim": "#71de5c",
+                "surface-container-lowest": "#140d07",
+                "primary-container": "#ff9933",
+                "on-error": "#690005",
+                "outline-variant": "#554336",
+                "on-background": "#f1dfd3",
+                "surface-container-highest": "#3d332b",
+                "surface-bright": "#42372f",
+                "secondary": "#71de5c",
+                "surface-variant": "#3d332b",
+                "primary-fixed": "#ffdcc2",
+                "on-surface-variant": "#dbc2b0",
+                "on-secondary": "#023a00",
+                "tertiary-fixed-dim": "#6cd2ff",
+                "surface-container-high": "#322820",
+                "on-primary-container": "#693800",
+                "tertiary": "#84d8ff",
+                "on-tertiary-fixed-variant": "#004d65",
+                "on-tertiary-container": "#004a62",
+                "inverse-surface": "#f1dfd3",
+                "background": "#1a120b",
+                "secondary-container": "#0b8502",
+                "surface": "#1a120b",
+                "primary": "#ffc08d",
+                "on-primary": "#4c2700",
+                "secondary-fixed": "#8dfc75",
+                "surface-container-low": "#231a13",
+                "on-primary-fixed": "#2e1500",
+                "inverse-on-surface": "#392e27",
+                "tertiary-fixed": "#bfe9ff",
+                "primary-fixed-dim": "#ffb77a"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "margin-mobile": "16px",
+                "container-max": "1280px",
+                "margin-desktop": "40px",
+                "base": "8px",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [
+                        "Montserrat"
+                ],
+                "headline-md": [
+                        "Montserrat"
+                ],
+                "headline-lg": [
+                        "Montserrat"
+                ],
+                "body-md": [
+                        "Montserrat"
+                ],
+                "caption": [
+                        "Montserrat"
+                ],
+                "body-lg": [
+                        "Montserrat"
+                ],
+                "label-bold": [
+                        "Montserrat"
+                ],
+                "display-lg": [
+                        "Montserrat"
+                ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "caption": [
+                        "12px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-bold": [
+                        "14px",
+                        {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "display-lg": [
+                        "64px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            font-variation-settings: 'FILL' 1;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a120b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3d332b;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Anchor (Shared Component Mapping) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-highest flex justify-between items-center px-margin-mobile h-16 border-b-2 border-on-primary-container">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary-container">Trending Scenes India</h1>
+<div class="flex items-center gap-4">
+<button class="relative hover:text-primary transition-all Click: opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary-container rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-on-primary-container">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a senior Indian news administrator in a sleek modern office. The lighting is cinematic with deep shadows and warm highlights, reflecting a high-contrast dark mode aesthetic. The background features subtle digital displays showing news feeds in shades of navy and saffron." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQfAo5od-9OFwgVt78OVJN312g79wMfoRudxuS5ieLq9vNhR-AsBY6OCxw_JQaVM-wbcvzMjIXT0597PawPZdFKpvEa_xExdW8JtruqK5KbqE11bXOYcFeHWjtplbMQEMx5MWBSArUAvQdv-r6lpFBlA3GaB-TPP5IbDYi9jBUEfn2SZ-y_4nnuyQe1biPoV4Fq6Vm6JvaBvWsL5CDvieB-cEnMtnkNO5oB1rFH0pDp-kAvxvc7fqF48WslyCfujpxK0ZKOga1x0A6"/>
+</div>
+</div>
+</header>
+<main class="mt-16 pb-24 px-margin-mobile">
+<!-- Quick Action & Stats Bento -->
+<section class="py-6 space-y-gutter">
+<!-- Stats at a glance (Asymmetric Layout) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 bg-surface-container p-4 border-l-4 border-primary-container flex justify-between items-center">
+<div>
+<p class="font-label-bold text-caption text-on-surface-variant uppercase tracking-widest">Live Stories</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-primary-container">1,284</p>
+</div>
+<span class="material-symbols-outlined text-primary-container text-4xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="bg-surface-container-high p-4 border-l-4 border-secondary-container">
+<p class="font-label-bold text-caption text-on-surface-variant uppercase tracking-widest">Total Views</p>
+<p class="font-headline-md text-headline-md text-secondary">24.8M</p>
+</div>
+<div class="bg-surface-container-high p-4 border-l-4 border-tertiary-container">
+<p class="font-label-bold text-caption text-on-surface-variant uppercase tracking-widest">Shares</p>
+<p class="font-headline-md text-headline-md text-tertiary">412K</p>
+</div>
+</div>
+<!-- Quick Action -->
+<button class="w-full bg-primary-container py-4 flex items-center justify-center gap-2 font-label-bold text-on-primary text-lg transition-transform active:scale-95" id="quick-add-btn">
+<span class="material-symbols-outlined">add_circle</span>
+                Add New Scene
+            </button>
+</section>
+<!-- Create New Scene Form (Mobile Optimized) -->
+<section class="bg-surface-container-low border-2 border-on-primary-container p-margin-mobile mb-gutter" id="form-section">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                Create New Scene
+            </h2>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-bold text-caption text-on-surface-variant uppercase">Story Title</label>
+<input class="w-full bg-surface-container-highest border-b-2 border-on-primary-container focus:border-primary-container text-on-surface px-3 py-3 outline-none transition-colors" placeholder="Enter headline..." type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-caption text-on-surface-variant uppercase">Category</label>
+<select class="w-full bg-surface-container-highest border-b-2 border-on-primary-container focus:border-primary-container text-on-surface px-3 py-3 outline-none appearance-none">
+<option>Politics</option>
+<option>Technology</option>
+<option>Entertainment</option>
+<option>Sports</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-caption text-on-surface-variant uppercase">Story Body</label>
+<textarea class="w-full bg-surface-container-highest border-b-2 border-on-primary-container focus:border-primary-container text-on-surface px-3 py-3 outline-none transition-colors" placeholder="Write the narrative..." rows="4"></textarea>
+</div>
+<!-- Media Upload Area -->
+<div class="space-y-2">
+<label class="font-label-bold text-caption text-on-surface-variant uppercase">Media Upload</label>
+<div class="border-2 border-dashed border-outline-variant bg-surface-container-lowest p-8 flex flex-col items-center justify-center gap-3 transition-all hover:bg-surface-variant active:scale-95">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant">cloud_upload</span>
+<p class="font-caption text-caption text-on-surface-variant">Tap to upload images or video</p>
+</div>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="flex-1 bg-secondary-container py-3 font-label-bold text-on-secondary text-sm active:scale-95" type="submit">PUBLISH LIVE</button>
+<button class="flex-1 border-2 border-secondary-container py-3 font-label-bold text-secondary text-sm active:scale-95" type="button">SAVE DRAFT</button>
+</div>
+</form>
+</section>
+<!-- Recent Stories List -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">history</span>
+                Recent Stories
+            </h2>
+<!-- Story Items -->
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="bg-surface-container flex h-24 border-l-4 border-on-primary-container overflow-hidden group">
+<div class="w-24 flex-shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A dramatic high-angle shot of the Indian Parliament building at night, illuminated by golden floods. The sky is a deep navy blue, creating a high-contrast patriotic scene. The image style is sharp and editorial, fitting for a premium news dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnslRRJBmS6Fn0FDX3Y4UKjBRjNWxbR_EDEI8c6inWowrAyfiXYQCs0FuZVqnbOC5TjKbZn6CNn4kcj4NBWO4zcBuoTNAFTjuT5FSIUkACz-oaLfSGtS7fTNq9gfnJ7Soy7MyxfXD82HqAByMOQ1dy0N969KUeyg8SGexo4MgbLxLdjeikHUQZadFjKbjQj07aGS3u4juST2sFrKigRTIps58R9Zj_ZF9HEUR0AvRUOONHze5uya4B4Hu92txYuR_y0DzfrR_UWBva"/>
+</div>
+<div class="flex-1 p-3 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h3 class="font-label-bold text-sm line-clamp-1">Economic Reform Policies 2024</h3>
+<span class="bg-secondary-container text-[10px] px-2 py-0.5 font-bold text-on-secondary">LIVE</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant">2 hours ago</span>
+<button class="text-primary-container flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span class="font-label-bold text-xs">EDIT</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container flex h-24 border-l-4 border-outline-variant overflow-hidden group">
+<div class="w-24 flex-shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="Close up of futuristic glowing circuitry in neon green and deep blacks, representing high-tech advancement. The lighting is moody and technical, matching the dark mode dashboard aesthetic with vibrant accent lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByTYWP6MfnSlRAqbSlyTFo-Yax6KIkmwRCrSvRbe93Wyo7drQ4nRZ-T1STOXJx0oBx0WSRYhjtn9p-bBugyXYw4JLDqVRxBLLOwc1gix6el8MUiZxLmEtZPArRAqax7x5c4imqPcOadwY8WExajzoEQ6CER_WToVxGmvdfXsbRIktSA52zr8zDKP0AvhdivaJFlXBQB2tZpA_-QfLlg9cabkrnn9YJ8R93eeLgpwxTb8bF-HNt9wNU5Y8uh0oi90yp2G0JzjVxClAR"/>
+</div>
+<div class="flex-1 p-3 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h3 class="font-label-bold text-sm line-clamp-1">AI Integration in Rural India</h3>
+<span class="bg-surface-variant text-[10px] px-2 py-0.5 font-bold text-on-surface-variant">DRAFT</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant">5 hours ago</span>
+<button class="text-primary-container flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span class="font-label-bold text-xs">EDIT</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container flex h-24 border-l-4 border-on-primary-container overflow-hidden group">
+<div class="w-24 flex-shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="A bustling street market in India during sunset, with vibrant colors of spices and textiles. The sunlight creates long dramatic shadows and a warm saffron glow across the entire scene, emphasizing a high-energy cultural vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXe5KNiT0R7t4Yn2Gi8vVuKm7CcWCJYxxlnBMqemUfDY1t1wV2DP8pLujNXx2q07xMdCdhdevx726vDnYtci2LpFBF59LtjOjhNG96I0J9vfvRss0TyI-9hfdACbdIXH0fGdZiwzf3PRiS0H8hctUC5Lj7xgfkx9joW9cIIKFtFsmg3ABzmNWMculXuPKBtfbb3sr8qo2y_kGhqIfUrU5fFQW_RmxtuD-y7O6I7huNJuHhSFLviPt9Dm594f5_EvajjsDmC3EhfSzW"/>
+</div>
+<div class="flex-1 p-3 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h3 class="font-label-bold text-sm line-clamp-1">Cultural Festivals Surge in Mumbai</h3>
+<span class="bg-secondary-container text-[10px] px-2 py-0.5 font-bold text-on-secondary">LIVE</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-caption text-caption text-on-surface-variant">Yesterday</span>
+<button class="text-primary-container flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span class="font-label-bold text-xs">EDIT</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Mapping) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-high h-20 flex justify-around items-center px-4 md:hidden border-t-2 border-on-primary-container shadow-2xl">
+<div class="flex flex-col items-center gap-1 text-primary-container font-bold">
+<span class="material-symbols-outlined active-tab" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-label-bold uppercase">Dashboard</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">article</span>
+<span class="text-[10px] font-label-bold uppercase">Stories</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">category</span>
+<span class="text-[10px] font-label-bold uppercase">Categories</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">perm_media</span>
+<span class="text-[10px] font-label-bold uppercase">Media</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-bold uppercase">Settings</span>
+</div>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.getElementById('quick-add-btn').addEventListener('click', () => {
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+            document.querySelector('#form-section').classList.add('ring-2', 'ring-primary-container');
+            setTimeout(() => {
+                document.querySelector('#form-section').classList.remove('ring-2', 'ring-primary-container');
+            }, 1000);
+        });
+
+        // Simple form visual feedback
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').style.color = '#ff9933';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').style.color = '#dbc2b0';
+            });
+        });
+    </script>
+</body></html>
