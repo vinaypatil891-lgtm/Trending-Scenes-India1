@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1a120b;
+        }
+        /* Custom scrollbar for news feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #140d07;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff9933;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#f1dfd3",
+                        "primary-fixed-dim": "#ffb77a",
+                        "primary-container": "#ff9933",
+                        "tertiary-fixed": "#bfe9ff",
+                        "outline-variant": "#554336",
+                        "tertiary": "#84d8ff",
+                        "background": "#1a120b",
+                        "secondary": "#71de5c",
+                        "inverse-primary": "#8f4e00",
+                        "on-primary": "#4c2700",
+                        "on-secondary-fixed-variant": "#035300",
+                        "tertiary-container": "#00c0f7",
+                        "secondary-fixed-dim": "#71de5c",
+                        "on-tertiary-container": "#004a62",
+                        "on-secondary-fixed": "#012200",
+                        "surface-container-high": "#322820",
+                        "on-error": "#690005",
+                        "primary": "#ffc08d",
+                        "on-primary-fixed": "#2e1500",
+                        "surface-bright": "#42372f",
+                        "on-tertiary-fixed": "#001f2a",
+                        "surface-container-highest": "#3d332b",
+                        "secondary-fixed": "#8dfc75",
+                        "outline": "#a38d7c",
+                        "surface-container-low": "#231a13",
+                        "surface-container-lowest": "#140d07",
+                        "error-container": "#93000a",
+                        "surface-variant": "#3d332b",
+                        "surface-container": "#271e17",
+                        "on-surface-variant": "#dbc2b0",
+                        "tertiary-fixed-dim": "#6cd2ff",
+                        "on-secondary": "#023a00",
+                        "inverse-on-surface": "#392e27",
+                        "primary-fixed": "#ffdcc2",
+                        "surface-dim": "#1a120b",
+                        "surface": "#1a120b",
+                        "inverse-surface": "#f1dfd3",
+                        "on-primary-container": "#693800",
+                        "on-primary-fixed-variant": "#6d3a00",
+                        "secondary-container": "#0b8502",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#004d65",
+                        "on-surface": "#f1dfd3",
+                        "on-tertiary": "#003547",
+                        "on-secondary-container": "#e9ffdd",
+                        "surface-tint": "#ffb77a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "caption": ["Montserrat"],
+                        "label-bold": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "label-bold": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background border-b-2 border-outline-variant">
+<div class="flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-black text-primary-container tracking-tighter">
+                Trending Scenes
+            </div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-label-bold font-label-bold text-primary dark:text-primary border-b-2 border-primary-container pb-1 hover:text-primary-container transition-colors duration-200" href="#">Politics</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Economy</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Defense</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Culture</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Tech</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Sports</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform">search</span>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform">account_circle</span>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-full w-64 fixed left-0 top-0 pt-20 bg-surface-container border-r-2 border-outline-variant hidden lg:flex flex-col">
+<div class="p-6">
+<h2 class="text-label-bold font-label-bold text-on-surface-variant uppercase tracking-widest opacity-60">Categories</h2>
+<p class="text-body-md font-body-md text-primary-container mt-1">Stay Alert, Stay Informed</p>
+</div>
+<nav class="flex flex-col gap-2 p-4">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container border-l-4 border-secondary transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-label-bold font-label-bold">Trending Now</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">live_tv</span>
+<span class="text-label-bold font-label-bold">Live Updates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">how_to_vote</span>
+<span class="text-label-bold font-label-bold">Election 2024</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-label-bold font-label-bold">Editorial</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">public</span>
+<span class="text-label-bold font-label-bold">World News</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="text-label-bold font-label-bold">Fact Check</span>
+</a>
+</nav>
+<div class="mt-auto p-4">
+<button class="w-full bg-primary-container text-on-primary font-label-bold py-3 hover:scale-105 transition-transform active:scale-95">
+                Subscribe to Premium
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-64 pt-24 px-gutter pb-12 max-w-container-max mx-auto">
+<!-- Market Pulse / Sensex -->
+<section class="mb-8 overflow-hidden bg-surface-container-low border-2 border-outline-variant">
+<div class="flex items-center gap-6 px-6 py-3 whitespace-nowrap animate-marquee">
+<div class="flex items-center gap-2">
+<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Sensex</span>
+<span class="text-headline-md font-headline-md text-secondary">72,431.12</span>
+<span class="text-label-bold font-label-bold text-secondary-fixed">+1.24% ▲</span>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Nifty 50</span>
+<span class="text-headline-md font-headline-md text-secondary">22,040.70</span>
+<span class="text-label-bold font-label-bold text-secondary-fixed">+0.89% ▲</span>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">USD/INR</span>
+<span class="text-headline-md font-headline-md text-error">83.12</span>
+<span class="text-label-bold font-label-bold text-error">-0.12% ▼</span>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Gold</span>
+<span class="text-headline-md font-headline-md text-secondary">62,450</span>
+<span class="text-label-bold font-label-bold text-secondary-fixed">+2.4% ▲</span>
+</div>
+</div>
+</section>
+<!-- Story of the Hour (Hero Section) -->
+<section class="mb-12 grid grid-cols-1 md:grid-cols-12 gap-6 h-[600px]">
+<div class="relative md:col-span-8 bg-surface-container-highest overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover opacity-60" data-alt="A powerful high-angle panoramic photograph of a vibrant Indian city square at dusk, with the national flag waving majestically in the foreground. The scene is illuminated by dramatic golden light reflecting off modern glass architecture and historic stone structures. The deep saffron and emerald green of the environment contrast sharply against the dark night sky, creating a high-energy, nationalistic mood with sharp geometric precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ1JvTvz5X1ShlBB0Z145TH_UjgP6V2nCGLE3q0j4G3rYw-_ZiZJb6Myy7pu_t4c8tPmV78l-qOVMMPNjpJksXoVkmsF5Drpr0cB_VfAW1sHgZ2yji527CDbH_T8nMJ-EyTGTPeZ_qgY6Lb1_wfhNMhoLuoMROkOTQM-MaQjiDdS9ptlVh6QSXwnmh9xgjEgvnZxfdy3sX_FoukZL7dL5J1eXOGq7Jr9f5F2FAH1QRfEhWCvh52aabqExd-24OlKl4ynNuGLO4XeSM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-10 max-w-2xl">
+<span class="bg-primary-container text-on-primary px-3 py-1 text-label-bold font-label-bold mb-4 inline-block">STORY OF THE HOUR</span>
+<h1 class="text-display-lg font-display-lg text-white mb-4 leading-tight">Digital Sovereignty: India's New Tech Era</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6">How the latest infrastructure developments are positioning the nation as the global hub for AI and manufacturing excellence.</p>
+<button class="bg-secondary text-on-secondary px-8 py-4 text-label-bold font-label-bold hover:brightness-110 transition-all flex items-center gap-2">
+                        READ FULL STORY <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-6">
+<div class="flex-1 bg-surface-bright p-6 border-l-4 border-secondary flex flex-col justify-between">
+<div>
+<span class="text-secondary text-label-bold font-label-bold uppercase">Defense</span>
+<h3 class="text-headline-md font-headline-md mt-2">New Indigenous Fighter Jet Prototype Unveiled</h3>
+</div>
+<a class="text-primary-container text-label-bold font-label-bold mt-4 flex items-center gap-1 group" href="#">
+                        Live Coverage <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+<div class="flex-1 bg-surface-container p-6 border-l-4 border-primary-container flex flex-col justify-between">
+<div>
+<span class="text-primary-container text-label-bold font-label-bold uppercase">Economy</span>
+<h3 class="text-headline-md font-headline-md mt-2">RBI Projects 7.8% Growth for Next Quarter</h3>
+</div>
+<a class="text-primary-container text-label-bold font-label-bold mt-4 flex items-center gap-1 group" href="#">
+                        Analysis <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Reels / News Grid -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-headline-lg font-headline-lg flex items-center gap-3">
+<span class="w-10 h-10 bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">bolt</span>
+</span>
+                    Flash News Reels
+                </h2>
+<div class="flex gap-2">
+<button class="p-2 border-2 border-outline-variant hover:border-primary-container transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-2 border-2 border-outline-variant hover:border-primary-container transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Reel Card 1 -->
+<div class="relative group aspect-[9/16] bg-surface-container-highest overflow-hidden border-2 border-outline-variant hover:border-secondary transition-all cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A portrait-oriented cinematic shot of a young Indian woman cheering at a sports stadium, her face painted with the tricolor. The background is a blur of saffron and green stadium lights, with a high-energy atmosphere. The image is captured with professional motion-blur and saturated cinematic coloring, emphasizing national pride and athletic excitement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7VMiyCMz_gtwKxgbqZBDCeA9Gg_kf0P6zA6gZBsID_kwOxlm6NM2yxcQkx4ChHXtI1h_bdIDP5qOlzaR7Qu3P7-84BRTQZhDk7mx3GcKxgNK8oDvD-odDThFZSAroc8sGevAsQlHR6BpZ7odlhiddDUMK4cXrdjc35SlQGIBr76EVCr-iF2C-vifewl2wQmJRdOPR87ftTY1x__J9gssNYCcK7yaXf2QMQrWTKxzeVXSLagzS1WuZ_1PDWUQYxB6Jblx-eDxidTha"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-caption font-caption text-secondary">2.4M Views</span>
+</div>
+<h4 class="text-body-md font-body-md text-white font-bold">Historic win for Indian Athletics in Budapest</h4>
+</div>
+</div>
+<!-- Reel Card 2 -->
+<div class="relative group aspect-[9/16] bg-surface-container-highest overflow-hidden border-2 border-outline-variant hover:border-secondary transition-all cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A vertical cinematic shot showing a high-speed train crossing a modern bridge in India, with the Taj Mahal visible in the distant haze during a bright sunrise. The lighting is golden and warm, casting long shadows. The color palette emphasizes high-contrast saffron sky and lush green riverbanks, creating a majestic and future-focused national identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAJC4AahbsPGS52JAIN79q793zBx4mcTua_OlCVn2p4S60xwMxK7oardU3tMuBQdz96b8a9y2OPzJ8OjXbzmmDN1TIXIvwGmtjzdW-4oFUzhyURKxXccLa3aUywTuWAkgaJAWIXJbBJIldSfDJho10zhBpGPE7Ct10LZN1BeF6ulQlXBWY-PeS30tnUkbi8aGJCunxFMPEUEKGe16yJrJGGTqnyHZIhkMKJ8vujEI2BL2y77Q6XaYDgKBU3UvZLJBDr2VbrYU_OB1k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-caption font-caption text-secondary">1.1M Views</span>
+</div>
+<h4 class="text-body-md font-body-md text-white font-bold">The Vande Bharat Revolution: Speeding across states</h4>
+</div>
+</div>
+<!-- Reel Card 3 -->
+<div class="relative group aspect-[9/16] bg-surface-container-highest overflow-hidden border-2 border-outline-variant hover:border-secondary transition-all cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A vertical portrait of a group of diverse tech innovators in a modern, neon-lit office in Bangalore. The lighting features sharp blue and saffron neon accents against deep shadows. The composition is dynamic and collaborative, reflecting a fast-paced entrepreneurial spirit. The visual style is crisp and high-contrast, representing India's global tech leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY69oJDSt5NnuIUGAi7bvSAtSYnjoYS1qLHzLuazDy60cwtk4QM9DQtra_KXR-B1syvqXYHIbLqna7RSIcYuk-Y0aTty7FYX7jeIkyMkr5gp7KcCcXXURdj5hKeAONnuA6kqaBXEhwDNximgscoitMFam8K_DmnHMj5N9JYecMW6NRjEYI10pSLwmUQ4zfOA8v5xRku2PlBMpCNUfwL0i0ckPO2SFyZvfRjCQraSxq2PBysEs1Drrrf8hoYjw_k9VMw9wRb9LH7GAl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-caption font-caption text-secondary">890K Views</span>
+</div>
+<h4 class="text-body-md font-body-md text-white font-bold">Unicorns on the Rise: The Startup Boom in 2024</h4>
+</div>
+</div>
+<!-- Reel Card 4 -->
+<div class="relative group aspect-[9/16] bg-surface-container-highest overflow-hidden border-2 border-outline-variant hover:border-secondary transition-all cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A cinematic vertical shot of a large-scale renewable energy solar farm in the Indian desert during the golden hour. The vast arrays of solar panels reflect the orange sun, while the horizon shows a transition into a deep emerald green. The atmosphere is clear and visionary, symbolizing a sustainable energy future with bold colors and sharp geometric lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnB379r76Ayp-EFEUkpH2Gsz9roBJ2cyOATlHQ_4D4Xhnj7-5-izuQHMKL8eEfDh1P5QZOrtvnfhJ09HOzo1e8FM1X66qFpxsGbknyG4U6SiNDa4xYpC7SwMdkkXEoZ3carsmu62DNWLXpdq3hAd6TKtP6Awio5c2KjhLX3ON6fm5znzf4TFe3SgN3W9mWIGlKgW-kMrGn7gXlg3nCO9dKm9-GDwzp3T3h81NOL_8VPZy01Hq1Dd-gTANqu8psjhyyEBvUMwdeaKW-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-caption font-caption text-secondary">3.2M Views</span>
+</div>
+<h4 class="text-body-md font-body-md text-white font-bold">Solar Power Milestone: India leads global energy shift</h4>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Insights -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 bg-surface-container p-8 border-t-4 border-secondary">
+<span class="text-secondary text-label-bold font-label-bold">ELECTION WATCH</span>
+<h3 class="text-headline-lg font-headline-lg mt-4 mb-6">Phase 4 Polling: High Voter Turnout Recorded</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-label-bold font-label-bold">
+<span>UTTAR PRADESH</span>
+<span class="text-secondary">68.4%</span>
+</div>
+<div class="w-full h-2 bg-outline-variant">
+<div class="h-full bg-secondary w-[68%]"></div>
+</div>
+<div class="flex justify-between items-center text-label-bold font-label-bold">
+<span>WEST BENGAL</span>
+<span class="text-secondary">74.2%</span>
+</div>
+<div class="w-full h-2 bg-outline-variant">
+<div class="h-full bg-secondary w-[74%]"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-bright p-8 border-t-4 border-primary-container">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4">public</span>
+<h3 class="text-headline-md font-headline-md mb-2">Global Impact</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">India's soft power reaches new heights as cultural exchanges triple in the EU.</p>
+<button class="mt-8 text-primary-container font-label-bold flex items-center gap-2">VIEW REPORT <span class="material-symbols-outlined">trending_flat</span></button>
+</div>
+<div class="bg-primary-container p-8 text-on-primary">
+<span class="material-symbols-outlined text-4xl mb-4">verified_user</span>
+<h3 class="text-headline-md font-headline-md mb-2">Editor's Choice</h3>
+<p class="text-body-md font-body-md text-on-primary/80">Exclusive interview with the leaders behind the indigenous satellite launch.</p>
+<button class="mt-8 bg-on-primary text-primary-container px-6 py-2 text-label-bold font-label-bold">READ NOW</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-gutter mt-auto bg-surface-container-lowest border-t-4 border-primary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-container-max mx-auto text-center md:text-left">
+<div>
+<div class="text-headline-lg font-headline-lg font-black text-primary-container mb-4">Trending Scenes</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Defining the narrative of a rising nation. Precision news, delivered with pride.</p>
+</div>
+<div>
+<h4 class="text-label-bold font-label-bold text-white uppercase mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-bold font-label-bold text-white uppercase mb-4">Connect</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">Contact Support</a></li>
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">Advertise</a></li>
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">RSS Feeds</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-bold font-label-bold text-white uppercase mb-4">Newsletter</h4>
+<div class="flex">
+<input class="bg-surface-variant border-none text-white focus:ring-1 focus:ring-primary-container w-full px-4 py-2" placeholder="Your email" type="email"/>
+<button class="bg-primary-container text-on-primary px-4 py-2 font-label-bold"><span class="material-symbols-outlined">send</span></button>
+</div>
+<p class="text-caption font-caption text-on-surface-variant mt-4 opacity-60">© 2024 Trending Scenes Media Group. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.95)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+
+        // Dynamic Marquee Logic (if needed for JS-based pause)
+        const marquee = document.querySelector('.animate-marquee');
+        if (marquee) {
+            marquee.addEventListener('mouseenter', () => marquee.style.animationPlayState = 'paused');
+            marquee.addEventListener('mouseleave', () => marquee.style.animationPlayState = 'running');
+        }
+    </script>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: fit-content;
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+</body></html><!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1a120b;
+        }
+        /* Custom scrollbar for news feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #140d07;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff9933;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#f1dfd3",
+                        "primary-fixed-dim": "#ffb77a",
+                        "primary-container": "#ff9933",
+                        "tertiary-fixed": "#bfe9ff",
+                        "outline-variant": "#554336",
+                        "tertiary": "#84d8ff",
+                        "background": "#1a120b",
+                        "secondary": "#71de5c",
+                        "inverse-primary": "#8f4e00",
+                        "on-primary": "#4c2700",
+                        "on-secondary-fixed-variant": "#035300",
+                        "tertiary-container": "#00c0f7",
+                        "secondary-fixed-dim": "#71de5c",
+                        "on-tertiary-container": "#004a62",
+                        "on-secondary-fixed": "#012200",
+                        "surface-container-high": "#322820",
+                        "on-error": "#690005",
+                        "primary": "#ffc08d",
+                        "on-primary-fixed": "#2e1500",
+                        "surface-bright": "#42372f",
+                        "on-tertiary-fixed": "#001f2a",
+                        "surface-container-highest": "#3d332b",
+                        "secondary-fixed": "#8dfc75",
+                        "outline": "#a38d7c",
+                        "surface-container-low": "#231a13",
+                        "surface-container-lowest": "#140d07",
+                        "error-container": "#93000a",
+                        "surface-variant": "#3d332b",
+                        "surface-container": "#271e17",
+                        "on-surface-variant": "#dbc2b0",
+                        "tertiary-fixed-dim": "#6cd2ff",
+                        "on-secondary": "#023a00",
+                        "inverse-on-surface": "#392e27",
+                        "primary-fixed": "#ffdcc2",
+                        "surface-dim": "#1a120b",
+                        "surface": "#1a120b",
+                        "inverse-surface": "#f1dfd3",
+                        "on-primary-container": "#693800",
+                        "on-primary-fixed-variant": "#6d3a00",
+                        "secondary-container": "#0b8502",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#004d65",
+                        "on-surface": "#f1dfd3",
+                        "on-tertiary": "#003547",
+                        "on-secondary-container": "#e9ffdd",
+                        "surface-tint": "#ffb77a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "caption": ["Montserrat"],
+                        "label-bold": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "label-bold": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background border-b-2 border-outline-variant">
+<div class="flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-black text-primary-container tracking-tighter">
+                Trending Scenes
+            </div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-label-bold font-label-bold text-primary dark:text-primary border-b-2 border-primary-container pb-1 hover:text-primary-container transition-colors duration-200" href="#">Politics</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Economy</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Defense</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Culture</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Tech</a>
+<a class="text-label-bold font-label-bold text-on-surface hover:text-primary-container transition-colors duration-200" href="#">Sports</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform">search</span>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform">account_circle</span>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-full w-64 fixed left-0 top-0 pt-20 bg-surface-container border-r-2 border-outline-variant hidden lg:flex flex-col">
+<div class="p-6">
+<h2 class="text-label-bold font-label-bold text-on-surface-variant uppercase tracking-widest opacity-60">Categories</h2>
+<p class="text-body-md font-body-md text-primary-container mt-1">Stay Alert, Stay Informed</p>
+</div>
+<nav class="flex flex-col gap-2 p-4">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container border-l-4 border-secondary transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-label-bold font-label-bold">Trending Now</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">live_tv</span>
+<span class="text-label-bold font-label-bold">Live Updates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">how_to_vote</span>
+<span class="text-label-bold font-label-bold">Election 2024</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-label-bold font-label-bold">Editorial</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">public</span>
+<span class="text-label-bold font-label-bold">World News</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-bright transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="text-label-bold font-label-bold">Fact Check</span>
+</a>
+</nav>
+<div class="mt-auto p-4">
+<button class="w-full bg-primary-container text-on-primary font-label-bold py-3 hover:scale-105 transition-transform active:scale-95">
+                Subscribe to Premium
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-64 pt-24 px-gutter pb-12 max-w-container-max mx-auto">
+<!-- Market Pulse / Sensex -->
+<section class="mb-8 overflow-hidden bg-surface-container-low border-2 border-outline-variant">
+<div class="flex items-center gap-6 px-6 py-3 whitespace-nowrap animate-marquee">
+<div class="flex items-center gap-2">
+<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Sensex</span>
+<span class="text-headline-md font-headline-md text-secondary">72,431.12</span>
+<span class="text-label-bold font-label-bold text-secondary-fixed">+1.24% ▲</span>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Nifty 50</span>
+<span class="text-headline-md font-headline-md text-secondary">22,040.70</span>
+<span class="text-label-bold font-label-bold text-secondary-fixed">+0.89% ▲</span>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">USD/INR</span>
+<span class="text-headline-md font-headline-md text-error">83.12</span>
+<span class="text-label-bold font-label-bold text-error">-0.12% ▼</span>
+</div>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-label-bold font-label-bold text-on-surface-variant uppercase">Gold</span>
+<span class="text-headline-md font-headline-md text-secondary">62,450</span>
+<span class="text-label-bold font-label-bold text-secondary-fixed">+2.4% ▲</span>
+</div>
+</div>
+</section>
+<!-- Story of the Hour (Hero Section) -->
+<section class="mb-12 grid grid-cols-1 md:grid-cols-12 gap-6 h-[600px]">
+<div class="relative md:col-span-8 bg-surface-container-highest overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover opacity-60" data-alt="A powerful high-angle panoramic photograph of a vibrant Indian city square at dusk, with the national flag waving majestically in the foreground. The scene is illuminated by dramatic golden light reflecting off modern glass architecture and historic stone structures. The deep saffron and emerald green of the environment contrast sharply against the dark night sky, creating a high-energy, nationalistic mood with sharp geometric precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ1JvTvz5X1ShlBB0Z145TH_UjgP6V2nCGLE3q0j4G3rYw-_ZiZJb6Myy7pu_t4c8tPmV78l-qOVMMPNjpJksXoVkmsF5Drpr0cB_VfAW1sHgZ2yji527CDbH_T8nMJ-EyTGTPeZ_qgY6Lb1_wfhNMhoLuoMROkOTQM-MaQjiDdS9ptlVh6QSXwnmh9xgjEgvnZxfdy3sX_FoukZL7dL5J1eXOGq7Jr9f5F2FAH1QRfEhWCvh52aabqExd-24OlKl4ynNuGLO4XeSM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-10 max-w-2xl">
+<span class="bg-primary-container text-on-primary px-3 py-1 text-label-bold font-label-bold mb-4 inline-block">STORY OF THE HOUR</span>
+<h1 class="text-display-lg font-display-lg text-white mb-4 leading-tight">Digital Sovereignty: India's New Tech Era</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6">How the latest infrastructure developments are positioning the nation as the global hub for AI and manufacturing excellence.</p>
+<button class="bg-secondary text-on-secondary px-8 py-4 text-label-bold font-label-bold hover:brightness-110 transition-all flex items-center gap-2">
+                        READ FULL STORY <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-6">
+<div class="flex-1 bg-surface-bright p-6 border-l-4 border-secondary flex flex-col justify-between">
+<div>
+<span class="text-secondary text-label-bold font-label-bold uppercase">Defense</span>
+<h3 class="text-headline-md font-headline-md mt-2">New Indigenous Fighter Jet Prototype Unveiled</h3>
+</div>
+<a class="text-primary-container text-label-bold font-label-bold mt-4 flex items-center gap-1 group" href="#">
+                        Live Coverage <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+<div class="flex-1 bg-surface-container p-6 border-l-4 border-primary-container flex flex-col justify-between">
+<div>
+<span class="text-primary-container text-label-bold font-label-bold uppercase">Economy</span>
+<h3 class="text-headline-md font-headline-md mt-2">RBI Projects 7.8% Growth for Next Quarter</h3>
+</div>
+<a class="text-primary-container text-label-bold font-label-bold mt-4 flex items-center gap-1 group" href="#">
+                        Analysis <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Reels / News Grid -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-headline-lg font-headline-lg flex items-center gap-3">
+<span class="w-10 h-10 bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">bolt</span>
+</span>
+                    Flash News Reels
+                </h2>
+<div class="flex gap-2">
+<button class="p-2 border-2 border-outline-variant hover:border-primary-container transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-2 border-2 border-outline-variant hover:border-primary-container transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Reel Card 1 -->
+<div class="relative group aspect-[9/16] bg-surface-container-highest overflow-hidden border-2 border-outline-variant hover:border-secondary transition-all cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A portrait-oriented cinematic shot of a young Indian woman cheering at a sports stadium, her face painted with the tricolor. The background is a blur of saffron and green stadium lights, with a high-energy atmosphere. The image is captured with professional motion-blur and saturated cinematic coloring, emphasizing national pride and athletic excitement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7VMiyCMz_gtwKxgbqZBDCeA9Gg_kf0P6zA6gZBsID_kwOxlm6NM2yxcQkx4ChHXtI1h_bdIDP5qOlzaR7Qu3P7-84BRTQZhDk7mx3GcKxgNK8oDvD-odDThFZSAroc8sGevAsQlHR6BpZ7odlhiddDUMK4cXrdjc35SlQGIBr76EVCr-iF2C-vifewl2wQmJRdOPR87ftTY1x__J9gssNYCcK7yaXf2QMQrWTKxzeVXSLagzS1WuZ_1PDWUQYxB6Jblx-eDxidTha"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-caption font-caption text-secondary">2.4M Views</span>
+</div>
+<h4 class="text-body-md font-body-md text-white font-bold">Historic win for Indian Athletics in Budapest</h4>
+</div>
+</div>
+<!-- Reel Card 2 -->
+<div class="relative group aspect-[9/16] bg-surface-container-highest overflow-hidden border-2 border-outline-variant hover:border-secondary transition-all cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A vertical cinematic shot showing a high-speed train crossing a modern bridge in India, with the Taj Mahal visible in the distant haze during a bright sunrise. The lighting is golden and warm, casting long shadows. The color palette emphasizes high-contrast saffron sky and lush green riverbanks, creating a majestic and future-focused national identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAJC4AahbsPGS52JAIN79q793zBx4mcTua_OlCVn2p4S60xwMxK7oardU3tMuBQdz96b8a9y2OPzJ8OjXbzmmDN1TIXIvwGmtjzdW-4oFUzhyURKxXccLa3aUywTuWAkgaJAWIXJbBJIldSfDJho10zhBpGPE7Ct10LZN1BeF6ulQlXBWY-PeS30tnUkbi8aGJCunxFMPEUEKGe16yJrJGGTqnyHZIhkMKJ8vujEI2BL2y77Q6XaYDgKBU3UvZLJBDr2VbrYU_OB1k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-caption font-caption text-secondary">1.1M Views</span>
+</div>
+<h4 class="text-body-md font-body-md text-white font-bold">The Vande Bharat Revolution: Speeding across states</h4>
+</div>
+</div>
+<!-- Reel Card 3 -->
+<div class="relative group aspect-[9/16] bg-surface-container-highest overflow-hidden border-2 border-outline-variant hover:border-secondary transition-all cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A vertical portrait of a group of diverse tech innovators in a modern, neon-lit office in Bangalore. The lighting features sharp blue and saffron neon accents against deep shadows. The composition is dynamic and collaborative, reflecting a fast-paced entrepreneurial spirit. The visual style is crisp and high-contrast, representing India's global tech leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY69oJDSt5NnuIUGAi7bvSAtSYnjoYS1qLHzLuazDy60cwtk4QM9DQtra_KXR-B1syvqXYHIbLqna7RSIcYuk-Y0aTty7FYX7jeIkyMkr5gp7KcCcXXURdj5hKeAONnuA6kqaBXEhwDNximgscoitMFam8K_DmnHMj5N9JYecMW6NRjEYI10pSLwmUQ4zfOA8v5xRku2PlBMpCNUfwL0i0ckPO2SFyZvfRjCQraSxq2PBysEs1Drrrf8hoYjw_k9VMw9wRb9LH7GAl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-caption font-caption text-secondary">890K Views</span>
+</div>
+<h4 class="text-body-md font-body-md text-white font-bold">Unicorns on the Rise: The Startup Boom in 2024</h4>
+</div>
+</div>
+<!-- Reel Card 4 -->
+<div class="relative group aspect-[9/16] bg-surface-container-highest overflow-hidden border-2 border-outline-variant hover:border-secondary transition-all cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" data-alt="A cinematic vertical shot of a large-scale renewable energy solar farm in the Indian desert during the golden hour. The vast arrays of solar panels reflect the orange sun, while the horizon shows a transition into a deep emerald green. The atmosphere is clear and visionary, symbolizing a sustainable energy future with bold colors and sharp geometric lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnB379r76Ayp-EFEUkpH2Gsz9roBJ2cyOATlHQ_4D4Xhnj7-5-izuQHMKL8eEfDh1P5QZOrtvnfhJ09HOzo1e8FM1X66qFpxsGbknyG4U6SiNDa4xYpC7SwMdkkXEoZ3carsmu62DNWLXpdq3hAd6TKtP6Awio5c2KjhLX3ON6fm5znzf4TFe3SgN3W9mWIGlKgW-kMrGn7gXlg3nCO9dKm9-GDwzp3T3h81NOL_8VPZy01Hq1Dd-gTANqu8psjhyyEBvUMwdeaKW-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="absolute bottom-0 p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-caption font-caption text-secondary">3.2M Views</span>
+</div>
+<h4 class="text-body-md font-body-md text-white font-bold">Solar Power Milestone: India leads global energy shift</h4>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Insights -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 bg-surface-container p-8 border-t-4 border-secondary">
+<span class="text-secondary text-label-bold font-label-bold">ELECTION WATCH</span>
+<h3 class="text-headline-lg font-headline-lg mt-4 mb-6">Phase 4 Polling: High Voter Turnout Recorded</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-label-bold font-label-bold">
+<span>UTTAR PRADESH</span>
+<span class="text-secondary">68.4%</span>
+</div>
+<div class="w-full h-2 bg-outline-variant">
+<div class="h-full bg-secondary w-[68%]"></div>
+</div>
+<div class="flex justify-between items-center text-label-bold font-label-bold">
+<span>WEST BENGAL</span>
+<span class="text-secondary">74.2%</span>
+</div>
+<div class="w-full h-2 bg-outline-variant">
+<div class="h-full bg-secondary w-[74%]"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-bright p-8 border-t-4 border-primary-container">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4">public</span>
+<h3 class="text-headline-md font-headline-md mb-2">Global Impact</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">India's soft power reaches new heights as cultural exchanges triple in the EU.</p>
+<button class="mt-8 text-primary-container font-label-bold flex items-center gap-2">VIEW REPORT <span class="material-symbols-outlined">trending_flat</span></button>
+</div>
+<div class="bg-primary-container p-8 text-on-primary">
+<span class="material-symbols-outlined text-4xl mb-4">verified_user</span>
+<h3 class="text-headline-md font-headline-md mb-2">Editor's Choice</h3>
+<p class="text-body-md font-body-md text-on-primary/80">Exclusive interview with the leaders behind the indigenous satellite launch.</p>
+<button class="mt-8 bg-on-primary text-primary-container px-6 py-2 text-label-bold font-label-bold">READ NOW</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-gutter mt-auto bg-surface-container-lowest border-t-4 border-primary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-container-max mx-auto text-center md:text-left">
+<div>
+<div class="text-headline-lg font-headline-lg font-black text-primary-container mb-4">Trending Scenes</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Defining the narrative of a rising nation. Precision news, delivered with pride.</p>
+</div>
+<div>
+<h4 class="text-label-bold font-label-bold text-white uppercase mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-bold font-label-bold text-white uppercase mb-4">Connect</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">Contact Support</a></li>
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">Advertise</a></li>
+<li><a class="text-on-surface-variant hover:underline hover:text-primary transition-opacity" href="#">RSS Feeds</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-bold font-label-bold text-white uppercase mb-4">Newsletter</h4>
+<div class="flex">
+<input class="bg-surface-variant border-none text-white focus:ring-1 focus:ring-primary-container w-full px-4 py-2" placeholder="Your email" type="email"/>
+<button class="bg-primary-container text-on-primary px-4 py-2 font-label-bold"><span class="material-symbols-outlined">send</span></button>
+</div>
+<p class="text-caption font-caption text-on-surface-variant mt-4 opacity-60">© 2024 Trending Scenes Media Group. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.95)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+
+        // Dynamic Marquee Logic (if needed for JS-based pause)
+        const marquee = document.querySelector('.animate-marquee');
+        if (marquee) {
+            marquee.addEventListener('mouseenter', () => marquee.style.animationPlayState = 'paused');
+            marquee.addEventListener('mouseleave', () => marquee.style.animationPlayState = 'running');
+        }
+    </script>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: fit-content;
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+</body></html>
